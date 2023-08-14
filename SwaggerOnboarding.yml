@@ -1,0 +1,92 @@
+openapi: '3.0.2'
+info:
+  title: Onboarding
+  description: STD22093
+  contact:
+    email: hei.zoarisoa@gmail.com
+  version: '1.0'
+servers:
+  - url: https://STD22093/v1
+ 
+paths:
+  /students:
+    get:
+      tags:
+        - "Student" 
+      summary: Get all students
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/StudentsResponse'
+        
+        '500': 
+          description: Internal Server Error
+
+
+  /student:
+    post:
+      tags:
+        - "Student"
+      summary: Insert User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentInput'
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddStudentsResponse'
+
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    StudentsResponse:
+      type: object
+      properties:
+        id: 
+          type: string
+          example: STD22093
+        name:
+          type: string
+          example: Zo
+        birthDate: 
+          type: string
+          format: date
+          example: 2005-02-21 
+    AddStudentsResponse:
+      type: object
+      properties:
+        id: 
+          type: string
+          example: STD22093
+        name:
+          type: string
+          example: Zo
+        birthDate: 
+          type: string
+          format: date
+          example: 2005-02-21
+    StudentInput:
+      type: object
+      properties:
+        id: 
+          type: string
+          example: New Identifiant
+        name:
+          type: string
+          example: New Student
+        birthDate: 
+          type: string
+          format: date
+          example: Birth date
+
+            

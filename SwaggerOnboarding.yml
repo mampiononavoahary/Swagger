@@ -20,7 +20,7 @@ paths:
           content:
             application/json:
               schema:
-               $ref: '#/components/schemas/StudentsResponse'
+               $ref: '#/components/schemas/StudentsReply'
         
         '500': 
           description: Internal Server Error
@@ -43,13 +43,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AddStudentsResponse'
+                $ref: '#/components/schemas/AddStudentsReply'
 
         '500':
           description: Internal Server Error
 components:
   schemas:
-    StudentsResponse:
+    StudentsReply:
       type: object
       properties:
         id: 
@@ -62,7 +62,7 @@ components:
           type: string
           format: date
           example: 2005-02-21 
-    AddStudentsResponse:
+    AddStudentsReply:
       type: object
       properties:
         id: 

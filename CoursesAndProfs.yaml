@@ -1,0 +1,92 @@
+openapi: 3.0.3
+info:
+  title: Courses and teacher
+  description: Get and post teacher with courses
+  contact:
+    email: hei.zoarisoa@gmail.com
+  version: 1.0.0
+servers:
+  - url: https://STD22093/api/v1
+paths:
+  /teachers:
+    get:
+      tags:
+        - teacher
+      summary: Find teacher
+      responses:
+        200:
+          description: find teacher successfully without error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeacherStructure'
+        500:
+          description: Internal server error
+    post:
+      tags:
+        - teacher
+      summary: insert a new teacher
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeacherValue'
+      responses:
+        201:
+          description: insertion teacher successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeacherStructure'
+        500:
+          description: internal server error
+components:
+  schemas:
+    TeacherStructure:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Mr Sitraka
+        courses:
+          type: array
+          items:
+            $ref: '#/components/schemas/courses'
+
+    courses:
+      type: object
+      properties:
+        name:
+          type: string
+          example: WEB
+        learnCourse:
+          type: string
+          example: react frontend
+        duration:
+          type: string
+          example: 2 or 4 hours
+
+    TeacherValue:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Mr Sitraka
+        courses:
+          type: array
+          items:
+            $ref: '#/components/schemas/coursesValues'
+
+    coursesValues:
+      type: object
+      properties:
+        name:
+          type: string
+          example: WEB
+        learnCourse:
+          type: string
+          example: react frontend
+        duration:
+          type: string
+          example: 2 or 4 hours
